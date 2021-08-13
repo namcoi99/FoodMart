@@ -1,0 +1,33 @@
+<div class="app-container">
+  <nav class="app-navbar pt-4 pb-4">
+    <div>
+      <a class="navbar-brand" href="#">
+        <img src="../assets/logo.png" width="" height="" alt="">
+      </a>
+    </div>
+    <div class="app-search">
+      <span class="app-categories">
+        All Categories
+        <fa-icon [icon]="faChevronDown" style="font-size:12px;"></fa-icon>
+      </span>
+      <input class="app-search-field" placeholder="what are you looking for" />
+      <button class="app-search-btn">Search</button>
+    </div>
+    <div class="app-navbar-items">
+      <div class="app-navbar-logbox">
+        <fa-icon [icon]="faUser"></fa-icon>
+        <div class="app-navbar-logbox__right-side">
+          <div class="hello"><a href="/register" style="text-decoration: none;color: black">Register</a></div>
+        </div>
+      </div>
+      <div class="app-navbar-icon" style="margin-left: 20px;margin-right: 20px;">
+        <fa-icon [icon]="faHeart"></fa-icon>
+      </div>
+      <div class="app-navbar-icon">
+        <fa-icon [icon]="faShoppingCart"></fa-icon>
+      </div>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>
