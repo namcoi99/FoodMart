@@ -54,11 +54,11 @@ public class UserService {
     }
 
     public User findUserById(Long id) {
-        return userRepository.findUserById(id)
+        return userRepository.findUserByUserID(id)
                 .orElseThrow(() -> new UserNotFoundException("User with id " + id + " was not found."));
     }
 
     public void deleteUser(Long id) {
-        userRepository.deleteUserById(id);
+        userRepository.deleteUserByUserID(id);
     }
 }

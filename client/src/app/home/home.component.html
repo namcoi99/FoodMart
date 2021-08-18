@@ -1,0 +1,25 @@
+<div class="app-home">
+    <div class="app-section">
+        <h2 class="app-section-heading">All Products</h2>
+        <div class="app-product-list">
+            <div class="app-product-item" *ngFor="let product of products">
+                <a class="app-product-link" href="#">
+                    <img src="{{product.imageUrl}}" alt="{{product.name}} image" class="app-product-img">
+                </a>
+                <div class="app-product-title">
+                    <a href="#" class="app-product-link">
+                        {{product.name}}
+                    </a>
+                </div>
+                <div class="app-line">
+                    <div class="app-product-price">
+                        {{product.price}}đ
+                    </div>
+                    <a class="app-cart-btn" href="#">
+                        <fa-icon [icon]="faShoppingBag"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

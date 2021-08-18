@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faUser, faShoppingCart, faHeart, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,7 +7,7 @@ import { faUser, faShoppingCart, faHeart, faChevronDown } from '@fortawesome/fre
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+  title = 'Food Mart';
   faUser = faUser;
   faShoppingCart = faShoppingCart;
   faHeart = faHeart;

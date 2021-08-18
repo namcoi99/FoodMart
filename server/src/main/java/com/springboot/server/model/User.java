@@ -8,28 +8,38 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private Long id;
-    @Column(nullable = false, unique=true)
+    private Long userID;
+    @Column(nullable = false)
     private String email;
-    @Column(nullable = false, unique=true, updatable = false)
+    @Column(nullable = false, updatable = false)
     private String username;
     private String password;
 
     public User() {}
 
-    public User(Long id, String email, String username, String password) {
-        this.id = id;
+    public User(Long userID, String email, String username, String password) {
+        this.userID = userID;
         this.email = email;
         this.username = username;
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
     public String getEmail() {
@@ -56,13 +66,4 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }
