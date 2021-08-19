@@ -17,6 +17,11 @@ public class UserResource {
         this.userService = userService;
     }
 
+    @GetMapping("/home")
+    public String showUser() {
+        return "Application works";
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.findAllUsers();
