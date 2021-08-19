@@ -37,7 +37,7 @@
     right: 0;
     top: 15px;
     height: 25px;
-    border: 1px solid #eeeeee;
+    border: 1px solid var(--border-color);
     color: red;
 }
 
@@ -60,11 +60,11 @@
     background-color: #f9f9f9;
     font-weight: 700;
     border-radius: 8px;
-    color: #347758;
+    color: var(--primary-color);
 }
 
 .app-search-btn:hover {
-    background-color: #347758;
+    background-color: var(--primary-color);
     color: #F4C340;
 }
 
@@ -81,7 +81,8 @@
 }
 
 .hello {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 .app-navbar-icon {
@@ -91,5 +92,5 @@
 fa-icon {
     font-size: 24px;
     display: inline-flex;
-    color: #347758;
+    color: var(--primary-color);
 }

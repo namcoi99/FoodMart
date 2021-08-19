@@ -18,4 +18,8 @@ export class UserService {
   public register(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiServerUrl}/user/add`, user);
   }
+  
+  public login(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiServerUrl}/user/login`, user);
+  }
 }

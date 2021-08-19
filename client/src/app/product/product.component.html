@@ -1,0 +1,105 @@
+<div class="app-product">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">All Products</li>
+        </ol>
+    </nav>
+
+    <!-- Search by product name -->
+    <div class="app-name-filter">
+        <div class="app-name-field">
+            <fa-icon [icon]="faSearch" class="app-search-icon"></fa-icon>
+            <input #key="ngModel" type="search" (ngModelChange)="searchProducts(key.value)" ngModel name="searchName" id="searchName" placeholder="Search item">
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="sidebar col-xs-12 col-sm-1 col-md-4 col-lg-3">
+
+            <!-- Filter Box -->
+            <div class="app-filterbox">
+                <h3 class="app-filter__heading">Filter</h3>
+
+                <!-- Category Filter -->
+                <div class="app-filter__section">
+                    <h4 class="app-filter__section-title">Category</h4>
+                    <ol class="app-filter-list" *ngFor="let category of categories">
+                        <li class="app-filter-item">
+                            <label for="category{{category.id}}">
+                                <input type="checkbox" name="categoryFilter" id="category{{category.id}}">
+                                {{category.name}}
+                            </label>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="app-filter__section">
+                    <h4 class="app-filter__section-title">Price</h4>
+                    <ol class="app-filter-list">
+                        <li class="app-filter-item">
+                            <label for="price1">
+                                <input type="checkbox" name="priceFilter" id="price1">
+                                Below 20.000
+                            </label>
+                        </li>
+                        <li class="app-filter-item">
+                            <label for="price2">
+                                <input type="checkbox" name="priceFilter" id="price2">
+                                From 20.000 To 50.000
+                            </label>
+                        </li>
+                        <li class="app-filter-item">
+                            <label for="price3">
+                                <input type="checkbox" name="priceFilter" id="price3">
+                                From 50.000 To 150.000
+                            </label>
+                        </li>
+                        <li class="app-filter-item">
+                            <label for="price4">
+                                <input type="checkbox" name="priceFilter" id="price4">
+                                Above 150.000
+                            </label>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- All Products List -->
+        <div class="content-wrapper col-xs-12 col-sm-12 col-md-8 col-lg-9">
+            <h2 class="app-product-category">All Products</h2>
+            <div class="app-product-list">
+                <div class="app-product-item" *ngFor="let product of products">
+                    <a class="app-product-link" href="#">
+                        <img src="{{product?.imageUrl}}" alt="{{product.name}} image" class="app-product-img">
+                    </a>
+                    <div class="app-product-title">
+                        <a href="#" class="app-product-link">
+                            {{product?.name}}
+                        </a>
+                    </div>
+                    <div class="app-line">
+                        <div class="app-product-price">
+                            {{product?.price}}đ
+                        </div>
+                        <a class="app-cart-btn" href="#">
+                            <fa-icon [icon]="faShoppingBag"></fa-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification for no products -->
+            <div *ngIf="products?.length == 0" class="alert alert-info" role="alert">
+                <h4 class="alert-heading">NO PRODUCTS!</h4>
+                <hr>
+                <p>No products were found.</p>
+            </div>
+        </div>
+    </div>
+</div>
