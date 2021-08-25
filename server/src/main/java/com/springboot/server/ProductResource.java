@@ -1,6 +1,6 @@
 package com.springboot.server;
 
-import com.springboot.server.model.Product;
+import com.springboot.server.model.AppProduct;
 import com.springboot.server.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,26 +18,26 @@ public class ProductResource {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.findAllProducts();
+    public ResponseEntity<List<AppProduct>> getAllProducts() {
+        List<AppProduct> products = productService.findAllProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
-        Product product = productService.findProductById(id);
+    public ResponseEntity<AppProduct> getProductById(@PathVariable("id") Long id) {
+        AppProduct product = productService.findProductById(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        Product newProduct = productService.addProduct(product);
+    public ResponseEntity<AppProduct> addProduct(@RequestBody AppProduct product) {
+        AppProduct newProduct = productService.addProduct(product);
         return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        Product updateProduct = productService.updateProduct(product);
+    public ResponseEntity<AppProduct> updateProduct(@RequestBody AppProduct product) {
+        AppProduct updateProduct = productService.updateProduct(product);
         return new ResponseEntity<>(updateProduct, HttpStatus.OK);
     }
 

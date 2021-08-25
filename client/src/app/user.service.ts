@@ -16,10 +16,10 @@ export class UserService {
   }
 
   public register(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiServerUrl}/user/add`, user);
+    return this.http.post<User>(`${this.apiServerUrl}/user/register`, user);
   }
   
   public login(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiServerUrl}/user/login`, user);
+    return this.http.post<User>(`${this.apiServerUrl}/auth/login`, user);
   }
 }

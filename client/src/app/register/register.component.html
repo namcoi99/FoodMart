@@ -4,29 +4,49 @@
             Registration Form
         </div>
         <div class="registration-form__body">
-            <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+            <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
-                    <input type="text" class="form-control" id="InputUsername" ngModel name="username"
-                        placeholder="Enter username" required>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="InputUsername" 
+                    name="username"
+                    placeholder="Enter username" 
+                    formControlName="username">
                 </div>
                 <div class="form-group">
                     <label for="InputEmail">Email address</label>
-                    <input type="email" ngModel name="email" class="form-control" id="InputEmail"
-                        placeholder="Enter email" required>
+                    <input type="email" 
+                    name="email" class="form-control" 
+                    id="InputEmail"
+                    placeholder="Enter email" 
+                    formControlName="email">
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
-                    <input type="password" ngModel name="password" class="form-control" id="InputPassword"
-                        placeholder="Password" required>
+                    <input type="password" 
+                    name="password" 
+                    class="form-control" 
+                    id="InputPassword"
+                    placeholder="Password" 
+                    formControlName="password">
                 </div>
                 <div class="form-group">
                     <label for="RepeatPassword">Repeat Password</label>
-                    <input type="password" ngModel class="form-control" id="RepeatPassword" name="repeatpassword"
-                        placeholder="Repeat Password" required>
+                    <input type="password" 
+                    class="form-control" 
+                    id="RepeatPassword" 
+                    name="repeatpassword"
+                    placeholder="Repeat Password" 
+                    formControlName="repeatpassword">
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="TermsAndServices" ngModel name="terms" required>
+                    <input type="checkbox" 
+                    class="form-check-input" 
+                    id="TermsAndServices"
+                    name="hasAgreed"
+                    formControlName="hasAgreed">
                     <label class="form-check-label" for="TermsAndServices">I agree to the terms and conditions and
                         privacy policy.</label>
                 </div>

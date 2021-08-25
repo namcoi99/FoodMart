@@ -6,10 +6,23 @@ import { faUser, faShoppingCart, faHeart, faChevronDown } from '@fortawesome/fre
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+  
+export class AppComponent implements OnInit{
+  username: string | null | undefined;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.username = localStorage.getItem("username");
+  }
   title = 'Food Mart';
   faUser = faUser;
   faShoppingCart = faShoppingCart;
   faHeart = faHeart;
   faChevronDown = faChevronDown;
+
+  onLogout() {
+    localStorage.removeItem("username");
+    this.username = "";
+  }
 }

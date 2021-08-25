@@ -1,23 +1,26 @@
 package com.springboot.server.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
-@Table(name="USER")
-public class User implements Serializable {
+@Table(name="USER",uniqueConstraints={@UniqueConstraint(columnNames={"email","username"})})
+public class AppUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long userID;
-    @Column(nullable = false)
+    @NotNull
     private String email;
     @Column(nullable = false, updatable = false)
     private String username;
+    @NotNull
     private String password;
 
-    public User() {}
+    public AppUser() {}
 
-    public User(Long userID, String email, String username, String password) {
+    public AppUser(Long userID, String email, String username, String password) {
         this.userID = userID;
         this.email = email;
         this.username = username;

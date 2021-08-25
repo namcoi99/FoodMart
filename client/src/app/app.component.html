@@ -17,11 +17,17 @@
       <div class="app-navbar-logbox">
         <fa-icon [icon]="faUser"></fa-icon>
         <div class="app-navbar-logbox__right-side">
-          <div class="hello">
+          <div *ngIf="!username; else authComp" class="hello">
             <a href="/login" style="text-decoration: none;color: black">Login</a>
             or
             <a href="/register" style="text-decoration: none;color: black">Register</a>
           </div>
+          <ng-template #authComp>
+            Hello, {{username}}
+            <div class="hello">
+              <a href="#" (click)="onLogout();" style="text-decoration: none;color: black">Logout</a>
+            </div>
+          </ng-template>
         </div>
       </div>
       <div class="app-navbar-icon" style="margin-left: 20px;margin-right: 20px;">

@@ -46,12 +46,15 @@ export class ProductComponent implements OnInit {
   }
 
   public searchProducts(key: string): void {
-    const results: Product[] = [];
-    this.products?.filter(product => product.name.toLowerCase().includes(key.toLowerCase()));
+    var results: Product[] | undefined = this.products?.filter(product => product.name.toLowerCase().includes(key.toLowerCase()));
     this.products = results;
     if (!key) {
       this.getProducts();
     }
+  }
+
+  public filterProducts(categories: string[]): void {
+
   }
 
 }

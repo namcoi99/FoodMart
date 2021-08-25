@@ -18,10 +18,14 @@ export class LoginComponent implements OnInit {
   }
 
   public onLogin(loginForm: NgForm): void {
+    console.log(loginForm.value);
     this.userService.login(loginForm.value).subscribe(
       (response: User) => {
         console.log(response);
-        this.router.navigate(['']);
+        localStorage.setItem("username", response.username);
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

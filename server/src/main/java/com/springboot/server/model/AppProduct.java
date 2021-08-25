@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="PRODUCT")
-public class Product implements Serializable {
+@Table(name="PRODUCT", uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+public class AppProduct implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
@@ -26,9 +26,9 @@ public class Product implements Serializable {
 
     private String imageUrl;
 
-    public Product() {}
+    public AppProduct() {}
 
-    public Product(Long productID, String name, String category, Long quantity, Long sold, Long price) {
+    public AppProduct(Long productID, String name, String category, Long quantity, Long sold, Long price) {
         this.productID = productID;
         this.name = name;
         this.category = category;

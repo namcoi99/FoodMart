@@ -13,7 +13,7 @@
                 </div>
                 <div class="app-line">
                     <div class="app-product-price">
-                        {{product.price}}đ
+                        {{product.price | currency: "VND"}}
                     </div>
                     <a class="app-cart-btn" href="#">
                         <fa-icon [icon]="faShoppingBag"></fa-icon>

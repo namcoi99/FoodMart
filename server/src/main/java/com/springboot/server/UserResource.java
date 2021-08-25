@@ -1,9 +1,12 @@
 package com.springboot.server;
 
-import com.springboot.server.model.User;
+import com.springboot.server.exception.PasswordNotValidException;
+import com.springboot.server.model.AppUser;
 import com.springboot.server.service.UserService;
+import com.springboot.server.utility.ValidateUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,32 +20,41 @@ public class UserResource {
         this.userService = userService;
     }
 
-    @GetMapping("/home")
-    public String showUser() {
-        return "Application works";
-    }
-
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.findAllUsers();
+    public ResponseEntity<List<AppUser>> getAllUsers() {
+        List<AppUser> users = userService.findAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-        User user = userService.findUserById(id);
+    public ResponseEntity<AppUser> getUserById(@PathVariable("id") Long id) {
+        AppUser user = userService.findUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<AppUser> registerUser(@RequestBody AppUser user) {
+//        Validate password
+        if(ValidateUtil.isValid(user.getPassword())) {
+//            If password is valid then encode it
+            String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+            System.out.println(encodedPassword);
+            user.setPassword(encodedPassword);
+            AppUser newUser = userService.registerUser(user);
+            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+        }
+        throw new PasswordNotValidException("This password " + user.getPassword() + " is not valid");
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User newUser = userService.addUser(user);
+    public ResponseEntity<AppUser> addUser(@RequestBody AppUser user) {
+        AppUser newUser = userService.addUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        User updateUser = userService.updateUser(user);
+    public ResponseEntity<AppUser> updateUser(@RequestBody AppUser user) {
+        AppUser updateUser = userService.updateUser(user);
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
 
